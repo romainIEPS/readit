@@ -9,7 +9,7 @@
 <?php foreach ($posts as $post): ?>
   <div class="col-md-6 d-flex ftco-animate">
     <div class="blog-entry justify-content-end">
-      <a href="#" class="block-20" style="background-image: url('images/<?php echo $post['image']; ?>');">
+      <a href="?postID=<?php echo $post['id']; ?>" class="block-20" style="background-image: url('images/<?php echo $post['image']; ?>');">
       </a>
       <div class="text p-4 float-right d-block">
         <div class="topper d-flex align-items-center">
@@ -21,9 +21,9 @@
             <span class="mos"><?php echo date_format(date_create($post['created_at']), "F"); ?></span>
           </div>
         </div>
-        <h3 class="heading mb-3"><a href="#"><?php echo $post['title']; ?></a></h3>
+        <h3 class="heading mb-3"><a href="?postID=<?php echo $post['id']; ?>"><?php echo $post['title']; ?></a></h3>
         <p><?php echo $post['resume']; ?></p>
-        <p><a href="#" class="btn-custom"><span class="ion-ios-arrow-round-forward mr-3"></span>Read more</a></p>
+        <p><a href="?postID=<?php echo $post['id']; ?>" class="btn-custom"><span class="ion-ios-arrow-round-forward mr-3"></span>Read more</a></p>
       </div>
     </div>
   </div>
