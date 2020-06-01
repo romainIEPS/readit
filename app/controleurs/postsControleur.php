@@ -24,9 +24,12 @@ use Modeles\Posts;
     // Je demande le détail d'un article au modèle
       include_once '../app/modeles/postsModeles.php';
       $post = Posts\findOneById($connexion, $id);
-    // Je demande les tags au modèles
+    // Je demande les tags au modèle
       include_once '../app/modeles/tagsModele.php';
       $tags = \Modeles\Tags\findByPostId($connexion, $id);
+    // Je demande l'auteur au modèle
+      include_once '../app/modeles/authorsModele.php';
+      $author = \Modeles\Authors\findOneById($connexion, $id);
     // et je mets le detail de l'article dans la vue show du posts dans $content
       GLOBAL $content, $title;
       $title = $post['title'];
