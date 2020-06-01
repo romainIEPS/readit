@@ -1,6 +1,6 @@
 <?php
 /*
-  ./app/controleurs/xxxControleur.php
+  ./app/controleurs/postsControleur.php
   Controleurs des posts
 */
 
@@ -24,7 +24,10 @@ use Modeles\Posts;
     // Je demande le détail d'un article au modèle
       include_once '../app/modeles/postsModeles.php';
       $post = Posts\findOneById($connexion, $id);
-    // et je mets la vue show dans $content
+    // Je demande les tags au modèles
+      include_once '../app/modeles/tagsModele.php';
+      $tags = \Modeles\Tags\findByPostId($connexion, $id);
+    // et je mets le detail de l'article dans la vue show du posts dans $content
       GLOBAL $content, $title;
       $title = $post['title'];
       ob_start();
