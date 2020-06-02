@@ -25,3 +25,16 @@ namespace Modeles\Posts;
     $rs->execute();
     return $rs->fetch(\PDO::FETCH_ASSOC);
   }
+
+  function FindLastestIndex(\PDO $connexion) {
+    $sql = "SELECT posts.image AS postImage,
+                   posts.created_at AS postDate,
+                   posts.resume AS postResume,
+                   authors.firstname AS authorName
+            FROM posts
+            JOIN authors ON posts.author_id = authors.id
+            ORDER BY created_at DESC
+            LIMIT 3;";
+    $rs = $connexion->query($sql);
+    return $rs->fetchAll(\PDO::FETCH_ASSOC);
+  }

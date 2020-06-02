@@ -43,3 +43,11 @@ use Modeles\Comments;
         include_once '../app/vues/posts/show.php';
       $content = ob_get_clean();
   }
+
+  function lastestIndex(\PDO $connexion) {
+    // Je demande au modèle la liste des posts
+      include_once '../app/modeles/postsModeles.php';
+      $lastPosts = Posts\FindLastestIndex($connexion);
+    // Je charge la vue index des lastPosts directement
+      include_once '../app/vues/posts/lastPosts.php';
+  }
