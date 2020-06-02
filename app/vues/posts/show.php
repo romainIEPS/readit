@@ -5,6 +5,8 @@
   Variable disponibles:
     $post ARRAY(title, created_at, resume, image, content,...)
     $tags ARRAY(ARRAY(id, nom))
+    $author ARRAY(id, firstname, lastname, image)
+    $comments ARRAY(ARRAY(id, pseudo, created_at, content))
 */
 ?>
 <p class="mb-5">
@@ -46,4 +48,6 @@
     <?php endforeach; ?>
   </ul>
   <!-- END comment-list -->
+
+  <?php include_once '../app/vues/comments/_addForm.php'; ?>
 </div>
