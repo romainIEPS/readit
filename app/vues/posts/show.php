@@ -23,10 +23,27 @@
 </div>
 <div class="about-author d-flex p-4 bg-light">
   <div class="bio mr-5">
-    <img src="images/<?php echo $author['image']; ?>" alt="<?php echo $author['firstname']; ?>" class="img-fluid mb-4">
+    <img src="images/<?php echo $author['image']; ?>" alt="<?php echo $author['firstname'] . ' ' . $author['lastname'];; ?>" class="img-fluid mb-4">
   </div>
   <div class="desc">
-    <h3><?php echo $author['firstname']; ?></h3>
+    <h3><?php echo $author['firstname'] . ' ' . $author['lastname']; ?></h3>
     <p><?php echo $author['biography']; ?></p>
   </div>
+</div>
+<div class="pt-5 mt-5">
+  <h3 class="mb-5">
+    0 Comments
+  </h3>
+  <ul class="comment-list">
+    <?php foreach ($comments as $comment): ?>
+      <li class="comment">
+        <div class="comment-body">
+          <h3><?php echo $comment['pseudo']; ?></h3>
+          <div class="meta mb-3"><?php echo date_format(date_create($comment['created_at']), "F d") . ', ' . date_format(date_create($comment['created_at']), "Y") . 'AT' . date_format(date_create($comment['created_at']), "h i A"); ?></div>
+          <p><?php echo $comment['content']; ?></p>
+        </div>
+      </li>
+    <?php endforeach; ?>
+  </ul>
+  <!-- END comment-list -->
 </div>

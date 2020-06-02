@@ -6,6 +6,9 @@
 
 namespace Controleurs\Posts;
 use Modeles\Posts;
+use Modeles\Tags;
+use Modeles\Authors;
+use Modeles\Comments;
 
   function indexAction(\PDO $connexion) {
     // Je demande la liste des posts au modele
@@ -26,10 +29,13 @@ use Modeles\Posts;
       $post = Posts\findOneById($connexion, $id);
     // Je demande les tags au modèle
       include_once '../app/modeles/tagsModele.php';
-      $tags = \Modeles\Tags\findByPostId($connexion, $id);
+      $tags = Tags\findByPostId($connexion, $id);
     // Je demande l'auteur au modèle
       include_once '../app/modeles/authorsModele.php';
-      $author = \Modeles\Authors\findOneById($connexion, $id);
+      $author = Authors\findOneById($connexion, $id);
+      // Je demande la liste des commentaires
+        include_once '../app/modeles/commentsModele.php';
+        $comments = Comments\findByPostId($connexion, $id);
     // et je mets le detail de l'article dans la vue show du posts dans $content
       GLOBAL $content, $title;
       $title = $post['title'];
