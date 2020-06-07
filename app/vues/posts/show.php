@@ -33,15 +33,22 @@
   </div>
 </div>
 <div class="pt-5 mt-5">
-  <h3 class="mb-5">
-    0 Comments
-  </h3>
+  <?php
+    $nombreComm = 0;
+    foreach ($comments as $comment):
+      $nombreComm += $comment['commentsCount'];
+    endforeach;
+     if ($nombreComm > 1): ?>
+      <h3 class="mb-5"><?php echo $nombreComm;?> Comments</h3>
+    <?php else: ?>
+      <h3 class="mb-5"><?php echo $nombreComm;?> Comment</h3>
+    <?php endif; ?>
   <ul class="comment-list">
     <?php foreach ($comments as $comment): ?>
       <li class="comment">
         <div class="comment-body">
           <h3><?php echo $comment['pseudo']; ?></h3>
-          <div class="meta mb-3"><?php echo date_format(date_create($comment['created_at']), "F d") . ', ' . date_format(date_create($comment['created_at']), "Y") . 'AT' . date_format(date_create($comment['created_at']), "h i A"); ?></div>
+          <div class="meta mb-3"><?php echo date_format(date_create($comment['created_at']), "F d, Y") .  ' AT ' . date_format(date_create($comment['created_at']), "h:i A"); ?></div>
           <p><?php echo $comment['content']; ?></p>
         </div>
       </li>

@@ -4,12 +4,19 @@
   ROUTEUR PRINCIPAL DE L'APPLICATION
 */
 
+// ROUTE AJOUT D'UN COMMENTAIRE
+// PATTERN: /?comments=add
+// CTRL: commentsControleur
+// ACTION: storeAction
+  if (isset($_GET['comments'])):
+    include_once '../app/controleurs/commentsControleur.php';
+    \Controleurs\Comments\storeAction($connexion);
 
 // ROUTE DU CONTACT
 // PATTERN: /?contact
 // CTRL: aucun
 // ACTION: aucune
-  if (isset($_GET['contact'])):
+  elseif (isset($_GET['contact'])):
     $title = "Contact";
     ob_start();
       include_once '../app/vues/templates/partials/contact.php';
@@ -24,7 +31,7 @@
     \Controleurs\Posts\showAction($connexion, $_GET['postID']);
 
 // ROUTE PAR DEFAUT
-// PATTERN: :
+// PATTERN: /
 // CTRL: postsControleur
 // ACTION: index
   else:
